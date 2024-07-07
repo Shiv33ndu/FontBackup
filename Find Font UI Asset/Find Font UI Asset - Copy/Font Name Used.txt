@@ -1,0 +1,23 @@
+Poppins
+
+Montserrat
+
+Font Family with all types of fonts files, multiple selects can be done 
+
+Ratings of Fonts 
+
+Lanuguage detection for fonts 
+
+TODO:
+
+- use openType.js to list fonts on site 
+- add functions like shuffle, ratings, favourite, reset
+- create a User Schema to have a fav fonts list  - D
+- create indie pages for fonts
+- create contact us page
+- create fav font list page for logged in users
+- give login option to user to have their own font lists 
+- have a state manager to show bookmarked fonts as per login flag
+- implement redis for caching
+
+

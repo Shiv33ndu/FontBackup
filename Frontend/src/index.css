@@ -1,0 +1,337 @@
+@tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  @layer base {
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 224 71.4% 4.1%;
+
+      --card: 0 0% 100%;
+      --card-foreground: 224 71.4% 4.1%;
+
+      --popover: 0 0% 100%;
+      --popover-foreground: 224 71.4% 4.1%;
+
+      --primary: 220.9 39.3% 11%;
+      --primary-foreground: 210 20% 98%;
+
+      --secondary: 220 14.3% 95.9%;
+      --secondary-foreground: 220.9 39.3% 11%;
+
+      --muted: 220 14.3% 95.9%;
+      --muted-foreground: 220 8.9% 46.1%;
+
+      --accent: 220 14.3% 95.9%;
+      --accent-foreground: 220.9 39.3% 11%;
+
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 210 20% 98%;
+
+      --border: 220 13% 91%;
+      --input: 220 13% 91%;
+      --ring: 224 71.4% 4.1%;
+
+      --radius: 0.5rem;
+    }
+
+    .dark {
+      --background: 224 71.4% 4.1%;
+      --foreground: 210 20% 98%;
+
+      --card: 224 71.4% 4.1%;
+      --card-foreground: 210 20% 98%;
+
+      --popover: 224 71.4% 4.1%;
+      --popover-foreground: 210 20% 98%;
+
+      --primary: 210 20% 98%;
+      --primary-foreground: 220.9 39.3% 11%;
+
+      --secondary: 215 27.9% 16.9%;
+      --secondary-foreground: 210 20% 98%;
+
+      --muted: 215 27.9% 16.9%;
+      --muted-foreground: 217.9 10.6% 64.9%;
+
+      --accent: 215 27.9% 16.9%;
+      --accent-foreground: 210 20% 98%;
+
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 210 20% 98%;
+
+      --border: 215 27.9% 16.9%;
+      --input: 215 27.9% 16.9%;
+      --ring: 216 12.2% 83.9%;
+    }
+  }
+
+  @layer base {
+    * {
+      @apply border-border;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
+  }
+
+
+
+  .rating {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 0.3rem;
+    --stroke: #666;
+    --fill: #fc4f1a;
+  }
+  
+  .rating input {
+    appearance: unset;
+  }
+  
+  .rating label {
+    cursor: pointer;
+  }
+  
+  .rating svg {
+    width: 2rem;
+    height: 2rem;
+    overflow: visible;
+    fill: transparent;
+    stroke: var(--stroke);
+    stroke-linejoin: bevel;
+    stroke-dasharray: 12;
+    animation: idle 4s linear infinite;
+    transition: stroke 0.2s, fill 0.5s;
+  }
+  
+  @keyframes idle {
+    from {
+      stroke-dashoffset: 24;
+    }
+  }
+  
+  .rating label:hover svg {
+    stroke: var(--fill);
+  }
+  
+  .rating input:checked ~ label svg {
+    transition: 0s;
+    animation: idle 4s linear infinite, yippee 0.75s backwards;
+    fill: var(--fill);
+    stroke: var(--fill);
+    stroke-opacity: 0;
+    stroke-dasharray: 0;
+    stroke-linejoin: miter;
+    stroke-width: 8px;
+  }
+  
+  @keyframes yippee {
+    0% {
+      transform: scale(1);
+      fill: var(--fill);
+      fill-opacity: 0;
+      stroke-opacity: 1;
+      stroke: var(--stroke);
+      stroke-dasharray: 10;
+      stroke-width: 1px;
+      stroke-linejoin: bevel;
+    }
+  
+    30% {
+      transform: scale(0);
+      fill: var(--fill);
+      fill-opacity: 0;
+      stroke-opacity: 1;
+      stroke: var(--stroke);
+      stroke-dasharray: 10;
+      stroke-width: 1px;
+      stroke-linejoin: bevel;
+    }
+  
+    30.1% {
+      stroke: var(--fill);
+      stroke-dasharray: 0;
+      stroke-linejoin: miter;
+      stroke-width: 8px;
+    }
+  
+    60% {
+      transform: scale(1.2);
+      fill: var(--fill);
+    }
+  }
+  
+  /* Pendulum loader Starts */
+  .newtons-cradle {
+    --uib-size: 50px;
+    --uib-speed: 1.2s;
+    --uib-color: rgb(0, 0, 0);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--uib-size);
+    height: var(--uib-size);
+   }
+   
+   .newtons-cradle__dot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 25%;
+    transform-origin: center top;
+   }
+   
+   .newtons-cradle__dot::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 25%;
+    border-radius: 50%;
+    background-color: var(--uib-color);
+   }
+   
+   .newtons-cradle__dot:first-child {
+    animation: swing var(--uib-speed) linear infinite;
+   }
+   
+   .newtons-cradle__dot:last-child {
+    animation: swing2 var(--uib-speed) linear infinite;
+   }
+   
+   @keyframes swing {
+    0% {
+     transform: rotate(0deg);
+     animation-timing-function: ease-out;
+    }
+   
+    25% {
+     transform: rotate(70deg);
+     animation-timing-function: ease-in;
+    }
+   
+    50% {
+     transform: rotate(0deg);
+     animation-timing-function: linear;
+    }
+   }
+   
+   @keyframes swing2 {
+    0% {
+     transform: rotate(0deg);
+     animation-timing-function: linear;
+    }
+   
+    50% {
+     transform: rotate(0deg);
+     animation-timing-function: ease-out;
+    }
+   
+    75% {
+     transform: rotate(-70deg);
+     animation-timing-function: ease-in;
+    }
+   }
+   
+  /* Pendulum loader ends*/
+
+
+  /* Wishlist CSS Starts */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .container {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+    user-select: none;
+    transition: 100ms;
+  }
+  
+  .checkmark {
+    top: 0;
+    left: 0;
+    height: 2em;
+    width: 2em;
+    transition: 100ms;
+    animation: dislike_effect 400ms ease;
+  }
+  
+  .container input:checked ~ .checkmark path {
+    fill: #FF5353;
+    stroke-width: 0;
+  }
+  
+  .container input:checked ~ .checkmark {
+    animation: like_effect 400ms ease;
+  }
+  
+  .container:hover {
+    transform: scale(1.1);
+  }
+  
+  @keyframes like_effect {
+    0% {
+      transform: scale(0);
+    }
+  
+    50% {
+      transform: scale(1.2);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes dislike_effect {
+    0% {
+      transform: scale(0);
+    }
+  
+    50% {
+      transform: scale(1.2);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+  /* Wishlist CSS Ends */
+
+
+  /* ScrollBar CSS Starts */
+  
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #000;
+    /* border-left: 6px solid white;
+    border-right: 6px solid white; */
+    
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background: #fc4f1a;
+    border: 1px solid #000;
+    border-radius: 30px;
+    min-height: 20px;
+    
+  }
+  
+  body::-webkit-scrollbar-thumb:hover {
+    background: #9b2c0a;
+  }
+  
+  /* ScrollBar CSS Ends */
